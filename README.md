@@ -64,8 +64,7 @@ This project is a **working simulation prototype** that demonstrates:
 ```bash
 sudo apt install ros-humble-ros-gzharmonic
 
-
-⸻
+---
 
 ## World and Model Details
 	•	Gazebo World: myworld
