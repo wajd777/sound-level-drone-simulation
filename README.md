@@ -67,25 +67,18 @@ sudo apt install ros-humble-ros-gzharmonic
 
 ⸻
 
-World and Model Details
+## World and Model Details
 	•	Gazebo World: myworld
 	•	PX4 Model: gz_x500_gimbal
 	•	Camera Topic:
 /world/myworld/model/x500_gimbal_0/link/camera_link/sensor/camera/image
+ 
+
+🔷 How to Run (Using VS Code)
 
 ⸻
 
-How to Run (Using VS Code)
-
-One-Time ROS 2 Setup (Optional)
-
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
-
-⸻
-
-Step 1: Run PX4 SITL with Gazebo and Custom World
+🔹 Step 1: Run PX4 SITL with Gazebo and Custom World
 
 cd ~/PX4-Autopilot
 
@@ -100,7 +93,7 @@ make px4_sitl gz_x500_gimbal
 
 ⸻
 
-Step 2: Run ROS ↔ Gazebo Bridge (Camera)
+🔹 Step 2: Run ROS ↔ Gazebo Bridge (Camera)
 
 ros2 run ros_gz_bridge parameter_bridge \
 /world/myworld/model/x500_gimbal_0/link/camera_link/sensor/camera/image@sensor_msgs/msg/Image@gz.msgs.Image
@@ -108,7 +101,7 @@ ros2 run ros_gz_bridge parameter_bridge \
 
 ⸻
 
-Step 3: Run Project Scripts
+🔹 Step 3: Run Project Scripts
 
 Run directly from VS Code (Run ▶) or terminal:
 
@@ -119,35 +112,7 @@ python3 gimbal_mission.py
 
 ⸻
 
-Verification
-
-To confirm that ROS 2 is receiving data:
+🔹 Verification
 
 ros2 topic list
 
-(Optional)
-
-ros2 topic echo /<topic_name>
-
-
-⸻
-
-Challenges & Solutions
-	•	World model loading with colors → Converting the model format to ensure correct visualization in Gazebo.
-	•	Drone operation using PX4 → Running PX4 with the same converted model format to ensure compatibility.
-	•	No real sound sensor → Combining drone models and generating simulated sound data to represent sound level measurements.
-
-⸻
-
-Demo Video
-
-A 1–2 minute demo video demonstrates:
-	1.	Drone spawning in the custom Gazebo world
-	2.	ROS 2 topic availability
-	3.	Drone response and mission execution
-
-⸻
-
-Notes
-	•	ROS 2 demo nodes (demo_nodes_py, demo_nodes_cpp) were used only to verify ROS 2 installation.
-	•	Sound data is simulated; no physical microphone sensor is used.
