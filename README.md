@@ -42,7 +42,7 @@ This project is a working simulation prototype demonstrating drone spawning, PX4
 - ROS 2 Humble
 - Gazebo Harmonic
 - PX4-Autopilot (SITL)
-'''bash
+  
 sudo apt install ros-humble-ros-gzharmonic
 
 ## World and Model Details
@@ -55,13 +55,17 @@ Camera Topic:
 
 
 ## Step 1: Run PX4 SITL with Gazebo and Custom World
-
+```bash
 cd ~/PX4-Autopilot
+
 export PX4_HOME_LAT=21.4225
 export PX4_HOME_LON=39.8262
 export PX4_HOME_ALT=50.63
-PX4_GZ_WORLD=myworld PX4_GZ_MODEL_POSE="-39.54,-29.14,19.5" make px4_sitl gz_x500_gimbal
 
+PX4_GZ_WORLD=myworld \
+PX4_GZ_MODEL_POSE="-39.54,-29.14,19.5" \
+make px4_sitl gz_x500_gimbal
+```
 ## Step 2: Run ROS ↔ Gazebo Bridge (Camera)
 ros2 run ros_gz_bridge parameter_bridge /world/myworld/model/x500_gimbal_0/link/camera_link/sensor/camera/image@sensor_msgs/msg/Image@gz.msgs.Image
 
