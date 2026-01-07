@@ -42,7 +42,7 @@ This project is a working simulation prototype demonstrating drone spawning, PX4
 - ROS 2 Humble
 - Gazebo Harmonic
 - PX4-Autopilot (SITL)
-
+'''bash
 sudo apt install ros-humble-ros-gzharmonic
 
 ## World and Model Details
@@ -53,11 +53,9 @@ Camera Topic:
 
 ## How to Run (Using VS Code)
 
-## Step 0: One-Time ROS 2 Setup (Optional)
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-source ~/.bashrc
 
 ## Step 1: Run PX4 SITL with Gazebo and Custom World
+
 cd ~/PX4-Autopilot
 export PX4_HOME_LAT=21.4225
 export PX4_HOME_LON=39.8262
