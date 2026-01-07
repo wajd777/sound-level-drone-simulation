@@ -49,8 +49,9 @@ sudo apt install ros-humble-ros-gzharmonic
 Gazebo World: myworld
 PX4 Model: gz_x500_gimbal
 Camera Topic:
-/world/myworld/model/x500_gimbal_0/link/camera_link/sensor/camera/image
-
+```bash
+ /world/myworld/model/x500_gimbal_0/link/camera_link/sensor/camera/image
+```
 ## How to Run (Using VS Code)
 
 
@@ -67,19 +68,17 @@ PX4_GZ_MODEL_POSE="-39.54,-29.14,19.5" \
 make px4_sitl gz_x500_gimbal
 ```
 ## Step 2: Run ROS ↔ Gazebo Bridge (Camera)
+```bash
 ros2 run ros_gz_bridge parameter_bridge /world/myworld/model/x500_gimbal_0/link/camera_link/sensor/camera/image@sensor_msgs/msg/Image@gz.msgs.Image
-
+```
 ## Step 3: Run Project Scripts
-python3 test.py
-python3 gimbal_mission.py
+ test.py in VS code
 
 ## Verification
+```bash
 ros2 topic list
+```
 
-## Challenges & Solutions
-World model loading with colors → Converting the model format to ensure correct visualization in Gazebo.
-Drone operation using PX4 → Running PX4 with the same converted model format to ensure compatibility.
-No real sound sensor → Combining drone models and generating simulated sound data to represent sound level measurements.
 
 ## Demo Video
 A 1–2 minute demo video demonstrates drone spawning, ROS 2 topic availability, and mission execution.
