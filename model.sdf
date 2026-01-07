@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version='1.9'>
+  <model name='x500_gimbal'>
+  
+  
+    <include merge='true'>
+      <uri>model://x500</uri>
+    </include>
+
+    <include merge='true'>
+      <uri>model://gimbal</uri>
+      <pose>0 0 0.25 0	0 3.14</pose>
+    </include>
+
+    <link name="sensor_on_top_link">
+      <pose>0.12 0 0.25 0 0 0</pose>
+      
+      <inertial>
+        <mass>0.02</mass>
+        <inertia>
+          <ixx>0.0001</ixx> <iyy>0.0001</iyy> <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="sensor_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius> 
+            <length>0.04</length> 
+            </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 0 1</ambient> <diffuse>0 0 0 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="sensor_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>sensor_on_top_link</child>
+    </joint>
+
+    <joint name="GimbalAttachJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>cgo3_mount_link</child>
+    </joint>
+  </model>
+</sdf>
